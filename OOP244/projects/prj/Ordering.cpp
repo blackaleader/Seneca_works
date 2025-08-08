@@ -7,7 +7,7 @@
 #include <sstream>
 
 namespace seneca {
-    
+
     Ordering::Ordering(const char* drinkFileName, const char* foodFileName) {
         m_foodArray = nullptr;
         m_drinkArray = nullptr;
@@ -29,7 +29,7 @@ namespace seneca {
                 }
             }
         }
-        
+
         std::ifstream drinkFile(drinkFileName);
         if (drinkFile) {
             m_drinkCount = countRecords(drinkFileName);
@@ -51,7 +51,7 @@ namespace seneca {
     Ordering::operator bool() const {
         return m_foodCount > 0 && m_drinkCount > 0;
     }
-    
+
     unsigned int Ordering::noOfBillItems() const {
         return m_billItemCount;
     }
@@ -70,7 +70,6 @@ namespace seneca {
 
     void Ordering::listFoods() const {
         if (!*this) return;
-        // std::cout << "List Of Avaiable Drinks\n";
         std::cout << "List Of Avaiable Meals\n";
         std::cout << "========================================\n";
         for (size_t i = 0; i < m_foodCount; i++) {
@@ -82,7 +81,6 @@ namespace seneca {
 
     void Ordering::listDrinks() const {
         if (!*this) return;
-        // std::cout << "List Of Avaiable Meals\n";
         std::cout << "List Of Avaiable Drinks\n";
         std::cout << "========================================\n";
         for (size_t i = 0; i < m_drinkCount; i++) {
@@ -98,7 +96,6 @@ namespace seneca {
         for (size_t i = 0; i < m_foodCount; ++i) {
             f_menu << (const char*)m_foodArray[i];
         }
-
         size_t selection = std::cout << f_menu;
         if (selection > 0) {
             if (m_billItemCount < MaximumNumberOfMenuItems) {
@@ -119,7 +116,6 @@ namespace seneca {
         for (size_t i = 0; i < m_drinkCount; ++i) {
             d_menu << (const char*)m_drinkArray[i];
         }
-
         size_t selection = std::cout << d_menu;
         if (selection > 0) {
             if (m_billItemCount < MaximumNumberOfMenuItems) {
@@ -169,10 +165,6 @@ namespace seneca {
         if (hasUnsavedBill()) {
             std::cout << "Saved bill number " << m_billNumber << "\n";
             std::cout << "Starting bill number " << (m_billNumber + 1) << "\n";
-
-            std::ostringstream billStream;
-            printBill(billStream);
-            std::cout << billStream.str();
             m_billNumber++;
             cleanBill();
         }
@@ -185,4 +177,5 @@ namespace seneca {
         }
         m_billItemCount = 0;
     }
+
 }

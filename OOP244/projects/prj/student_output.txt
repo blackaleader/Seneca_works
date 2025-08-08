@@ -1,0 +1,30 @@
+Script started on Fri 08 Aug 2025 11:34:18 AM EDT
+==84040== Memcheck, a memory error detector
+==84040== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==84040== Using Valgrind-3.21.0 and LibVEX; rerun with -h for copyright info
+==84040== Command: ms.exe
+==84040== 
+Testing Invalid Ordering if bad data is in data file!
+Passed!
+Testing fool proofint...............................
+      Drink Menu
+       1- Pepsi
+       2- Orange Juice
+       3- Coffee
+       0- Back to Order
+      > 
+You must enter a value: -1
+Invalid value: [0<= value <=3], try again: 4
+Invalid value: [0<= value <=3], try again: abc
+Invalid integer: 123abc
+Only an integer please: 0
+==84040== 
+==84040== HEAP SUMMARY:
+==84040==     in use at exit: 0 bytes in 0 blocks
+==84040==   total heap usage: 133 allocs, 133 frees, 112,783 bytes allocated
+==84040== 
+==84040== All heap blocks were freed -- no leaks are possible
+==84040== 
+==84040== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+Script done on Fri 08 Aug 2025 11:34:38 AM EDT
