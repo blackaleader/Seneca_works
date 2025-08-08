@@ -1,0 +1,14 @@
+In line number 92 of your output:
+The output should be:
+Starting bill number 2
+^
+But your output is: 
+Bill # 001 =============================
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [S] ASCII code(83)
+but you printed
+  [B] ASCII code(66)
+
