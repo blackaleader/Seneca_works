@@ -1,0 +1,19 @@
+
+[7m[1m[36m RUN [39m[22m[27m [36mv2.1.1[39m [90mC:/Users/Arman/Downloads/assignment-2 (1)/a2[39m
+
+ [32m✓[39m src/problem-08.test.js [2m ([22m[2m2 tests[22m[2m)[22m[90m 7[2mms[22m[39m
+ [32m✓[39m src/problem-09.test.js [2m ([22m[2m2 tests[22m[2m)[22m[90m 9[2mms[22m[39m
+ [32m✓[39m src/problem-10.test.js [2m ([22m[2m3 tests[22m[2m)[22m[90m 11[2mms[22m[39m
+ [32m✓[39m src/problem-05.test.js [2m ([22m[2m3 tests[22m[2m)[22m[90m 8[2mms[22m[39m
+ [32m✓[39m src/problem-07.test.js [2m ([22m[2m3 tests[22m[2m)[22m[90m 9[2mms[22m[39m
+ [32m✓[39m src/problem-02.test.js [2m ([22m[2m5 tests[22m[2m)[22m[90m 9[2mms[22m[39m
+ [32m✓[39m src/problem-06.test.js [2m ([22m[2m3 tests[22m[2m)[22m[90m 10[2mms[22m[39m
+ [32m✓[39m src/problem-01.test.js [2m ([22m[2m6 tests[22m[2m)[22m[90m 14[2mms[22m[39m
+ [32m✓[39m src/problem-04.test.js [2m ([22m[2m3 tests[22m[2m)[22m[90m 8[2mms[22m[39m
+ [32m✓[39m src/problem-03.test.js [2m ([22m[2m2 tests[22m[2m)[22m[90m 9[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m10 passed[39m[22m[90m (10)[39m
+[2m      Tests [22m [1m[32m32 passed[39m[22m[90m (32)[39m
+[2m   Start at [22m 12:57:48
+[2m   Duration [22m 1.41s[2m (transform 338ms, setup 0ms, collect 1.10s, tests 93ms, environment 5ms, prepare 4.69s)[22m
+
