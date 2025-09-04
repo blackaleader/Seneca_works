@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=500, initial-scale=1" />
+    <meta name="author" content="Arman Ataeipour" />
+    <title>Request a New Artist — PersiaFy</title>
+    <link rel="stylesheet" href="./css/water.css" />
+    <style>
+      main {
+        max-width: 760px;
+      }
+      form {
+        display: grid;
+        gap: 1rem;
+      }
+      .row {
+        display: grid;
+        gap: 0.35rem;
+      }
+      .inline {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .inline input[type="url"] {
+        flex: 1 1 320px;
+      }
+      .help {
+        opacity: 0.8;
+        font-size: 0.95rem;
+      }
+      .error {
+        color: #b00020;
+      }
+      .status {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+      }
+      .add-btn {
+        margin-top: 0.25rem;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Request a New Artist</h1>
+      <p>
+        Suggest an artist we should add to PersiaFy. Include links so we can
+        verify their work.
+      </p>
+    </header>
+
+    <nav>
+      <a href="./index.html">← Back to Music App</a>
+    </nav>
+    <hr />
+
+    <main>
+      <form
+        id="artist-form"
+        action="https://httpbin.org/post"
+        method="post"
+        novalidate
+      >
+        <div class="row">
+          <label for="artist-name"
+            >Artist’s Name <span aria-hidden="true">*</span></label
+          >
+          <input
+            id="artist-name"
+            name="artistName"
+            type="text"
+            required
+            placeholder="e.g., Googoosh"
+          />
+        </div>
+
+        <div class="row">
+          <label for="genre"
+            >Music Genre <span aria-hidden="true">*</span></label
+          >
+          <input
+            id="genre"
+            name="genre"
+            list="genre-list"
+            required
+            placeholder="Pick or type a genre"
+          />
+          <datalist id="genre-list">
+            <option value="Pop"></option>
+            <option value="Rock"></option>
+            <option value="Hip-Hop"></option>
+            <option value="R&B"></option>
+            <option value="Electronic"></option>
+            <option value="Traditional"></option>
+            <option value="Folk"></option>
+            <option value="Jazz"></option>
+            <option value="Classical"></option>
+            <option value="World"></option>
+          </datalist>
+          <p class="help">
+            Choose one from the list or type your own (custom values allowed).
+          </p>
+        </div>
+
+        <div class="row">
+          <label for="social-urls">Social Media URLs</label>
+          <input
+            id="social-urls"
+            name="socialUrls"
+            type="url"
+            inputmode="url"
+            placeholder="Add one or more URLs (separate with commas or spaces)"
+          />
+          <p class="help">
+            Examples: https://instagram.com/..., https://twitter.com/...
+          </p>
+        </div>
+
+        <fieldset class="row">
+          <legend>Song / Video URLs</legend>
+
+          <div id="media-list" class="row">
+            <div class="inline media-item">
+              <label class="sr-only" for="media-0">Media URL</label>
+              <input
+                id="media-0"
+                name="mediaUrls[]"
+                type="url"
+                inputmode="url"
+                placeholder="https://example.com/song-or-video"
+              />
+              <button
+                type="button"
+                class="remove-media"
+                aria-label="Remove"
+                hidden
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+
+          <button type="button" id="add-media" class="add-btn">
+            Add another
+          </button>
+          <p class="help">Add as many links as you like.</p>
+        </fieldset>
+
+        <div class="row">
+          <label class="inline" for="explicit">
+            <input id="explicit" name="explicit" type="checkbox" />
+            Includes explicit lyrics
+          </label>
+        </div>
+
+        <div class="row">
+          <label for="reason">Why should we add this artist?</label>
+          <textarea
+            id="reason"
+            name="reason"
+            rows="6"
+            placeholder="Tell us why this artist belongs on PersiaFy..."
+          ></textarea>
+        </div>
+
+        <div class="row">
+          <button type="submit">Submit Request</button>
+          <div id="artist-status" class="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </main>
+
+    <script src="./js/forms.js"></script>
+  </body>
+</html>
