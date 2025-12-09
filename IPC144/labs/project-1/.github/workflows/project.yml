@@ -1,0 +1,107 @@
+name: Project
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+    paths:
+      - 'project*'
+      
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'project*'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+        with:
+          path: ./assignment
+
+      - name: Checkout Tester
+        uses: actions/checkout@v4
+        with:
+          repository: seneca-ipc144/testers
+          token: ${{ secrets.TESTER_ACCESS }}
+          path: ./tester
+
+      - name: Copy test runners
+        run: cp ./tester/*.py ./
+
+      - name: Copy assignment files
+        run:  |
+          cp ./assignment/project.c ./
+          cp ./assignment/project.h ./
+          cp ./assignment/projectmain.c ./
+
+
+
+      - name: Compile C programs
+        run: |
+          gcc project.c projectmain.c -o project
+
+
+      - name: Run Project - EXPAND TO SEE RESULTS
+        run: |
+          echo "Test 1: Right Facing, 1 car, no errors in input, lower case r"
+          echo
+          timeout 10 python ./project1test1.py
+          echo
+          echo "-----------------------------------------------------------------------------------"
+          echo
+          echo "Test 2: Left Facing, 2 car, no errors in input, upper case L"
+          echo
+          timeout 10 python ./project1test2.py
+          echo
+          echo "-----------------------------------------------------------------------------------"
+          echo
+          echo "Test 3: Right Facing, 0 car, negative out of range car values entered, 0 then upper case R"
+          echo
+          timeout 10 python ./project1test3.py
+          echo
+          echo "-----------------------------------------------------------------------------------"
+          echo
+          echo "Test 4: Left Facing, 5 car, positive out of range data, 5 then lower case L"
+          echo
+          timeout 10 python ./project1test4.py
+          echo
+          echo "-----------------------------------------------------------------------------------"
+          echo
+          echo "Test 5: Right Facing, 2 car, characters other than L/R used for error testing, lower case r"
+          echo
+          timeout 10 python ./project1test5.py
+          echo
+          echo "-----------------------------------------------------------------------------------"
+          echo
+          echo "Test 6: Left Facing, 1 car, characters other than L/R used for error testing, lower case l"
+          echo
+          timeout 10 python ./project1test6.py
+          echo
+          echo "-----------------------------------------------------------------------------------"
+          echo
+          echo "Test 7: Right Facing, 3 car, characters other than L/R used for error testing, upper case R"
+          echo
+          timeout 10 python ./project1test7.py
+          echo
+          echo "-----------------------------------------------------------------------------------"
+          echo
+          echo "Test 8: Right Facing, 3 car, characters other than L/R used for error testing, upper case L"
+          echo
+          timeout 10 python ./project1test8.py
+          echo
+          echo "-----------------------------------------------------------------------------------"
+          echo
+          echo "Test 9: Right Facing, 2 car, A mix of wrong entries before valid values"
+          echo
+          timeout 10 python ./project1test9.py

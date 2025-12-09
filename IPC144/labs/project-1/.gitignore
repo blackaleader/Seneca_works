@@ -1,0 +1,9 @@
+a.out
+*.exe
+project
+.vs
+**/x64/
+**/x32/
+**/Debug/
+**/Release/
+*.vcxproj.user
